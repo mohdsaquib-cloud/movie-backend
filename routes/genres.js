@@ -18,7 +18,8 @@ router.get('/:id',validateObjectId,async(req,res)=>{
     res.send(genre);
 });
 
-router.post('/',auth,async(req,res)=>{      
+router.post('/',auth,async(req,res)=>{ 
+    console.log(req);
     const {error} =validate(req.body);
     if(error) return res.status(404).send(error.details[0].message);    
     const genre = new Genre({name:req.body.name})    
